@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace ejercicioGlobal1Casa.Servicios
 {
+    /// <summary>
+    /// implementacion que implementa a CrearIdInterfaz
+    /// </summary>
     internal class CrearIdImplemtacion : CrearIdInterfaz
     {
 
@@ -15,7 +18,7 @@ namespace ejercicioGlobal1Casa.Servicios
 
             long id = 0;
             int tamañoLista  = biblioteca.Count;
-            if(tamañoLista < 0)
+            if(tamañoLista > 0)
             {
                 id = biblioteca[tamañoLista - 1].Id + 1;
             }
@@ -30,7 +33,7 @@ namespace ejercicioGlobal1Casa.Servicios
         {
             long id = 0;
             int tamañoLista = cliente.Count;
-            if (tamañoLista < 0)
+            if (tamañoLista > 0)
             {
                 id = cliente[tamañoLista - 1].Id + 1;
             }
@@ -45,7 +48,7 @@ namespace ejercicioGlobal1Casa.Servicios
         {
             long id = 0;
             int tamañoLista = libro.Count;
-            if (tamañoLista < 0)
+            if (tamañoLista > 0)
             {
                 id = libro[tamañoLista - 1].Id + 1;
             }
@@ -60,7 +63,7 @@ namespace ejercicioGlobal1Casa.Servicios
         {
             long id = 0;
             int tamañoLista = prestamo.Count;
-            if (tamañoLista < 0)
+            if (tamañoLista > 0)
             {
                 id = prestamo[tamañoLista - 1].Id + 1;
             }

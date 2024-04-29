@@ -16,7 +16,7 @@ namespace ejercicioGlobal1Casa.Servicios
         
         public void ficheroBliblioteca(List<BibliotecaDto> biblioteca, string ruta)
         {
-            ruta = ruta + "biblioteca";
+            
             try
             {
                 if (File.Exists(ruta))
@@ -41,7 +41,7 @@ namespace ejercicioGlobal1Casa.Servicios
         }
         public void ficheroCliente(List<ClienteDto> cliente, string ruta)
         {
-            ruta = ruta + "";
+            
             try
             {
                 if (File.Exists(ruta))
@@ -78,7 +78,7 @@ namespace ejercicioGlobal1Casa.Servicios
 
         public void ficheroLibro(List<LibroDto> libro, string ruta)
         {
-            ruta = ruta + "libros";
+            
             try
             {
                 if (File.Exists(ruta))
@@ -102,7 +102,7 @@ namespace ejercicioGlobal1Casa.Servicios
 
         public void ficheroPrestamo(List<PrestamoDto> prestamo, string ruta)
         {
-            ruta = ruta + "prestamo";
+            
             try
             {
                 if (File.Exists(ruta))

@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace ejercicioGlobal1Casa.Servicios
 {
+    /// <summary>
+    /// implementacion que implementa a DarAltaInterfaz
+    /// </summary>
     internal class DarAltaImplementacion : DarAltaInterfaz
     {
         CrearIdInterfaz ci  =new CrearIdImplemtacion();
@@ -37,13 +40,11 @@ namespace ejercicioGlobal1Casa.Servicios
             try
             {
                 long id = ci.crearIdCliente(cliente);
-                Console.WriteLine("escribe el nombre de la biblioteca");
-                string nombreBiblioteca = Console.ReadLine();
                 Console.WriteLine("escribe tu nombre");
                 string nombre = Console.ReadLine();
                 Console.WriteLine("escribe tu apellido");
                 string apellido = Console.ReadLine();
-                Console.WriteLine("escribe tu fecha de nacimiento (yyyy-MM-dd ");
+                Console.WriteLine("escribe tu fecha de nacimiento (yyyy-MM-dd )");
                 DateTime fchNacimiento = Convert.ToDateTime(Console.ReadLine());
                 Console.WriteLine("escribe tu dni");
                 string dni = DNI();
@@ -62,31 +63,36 @@ namespace ejercicioGlobal1Casa.Servicios
         /// <returns></returns>
         private string DNI()
         {
-            char[] letras = new char[] { 'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E' };
-
-            int dniNum = 1;
-            char letra = 'a';
-            bool comprobante = false;
-            while (!comprobante)
+            try
             {
-                Console.WriteLine("Dame el dni(Numero)");
-                dniNum = Int32.Parse(Console.ReadLine());
-                Console.WriteLine("Dame el dni(Letra en mayuscula)");
-                letra = Convert.ToChar(Console.ReadLine());
+                char[] letras = new char[] { 'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E' };
 
-                int resto = dniNum % 23;
-                if (letras[resto] == letra)
+                int dniNum = 1;
+                char letra = 'a';
+                bool comprobante = false;
+                while (!comprobante)
                 {
-                    comprobante = true;
-                }
-                else
-                {
-                    comprobante = false;
-                }
+                    Console.WriteLine("Dame el dni(Numero)");
+                    dniNum = Int32.Parse(Console.ReadLine());
+                    Console.WriteLine("Dame el dni(Letra en mayuscula)");
+                    letra = Convert.ToChar(Console.ReadLine());
 
+                    int resto = dniNum % 23;
+                    if (letras[resto] == letra)
+                    {
+                        comprobante = true;
+                    }
+                    else
+                    {
+                        comprobante = false;
+                    }
+
+                }
+                string dni = dniNum + "" + letra;
+                return dni;
             }
-            string dni = dniNum + "" + letra;
-            return dni;
+            catch (Exception ex) { throw; }    
+            
         }
 
         public void darAltaLibro(List<LibroDto> libro)
@@ -94,8 +100,6 @@ namespace ejercicioGlobal1Casa.Servicios
             try
             {
                 long id = ci.crearIdLibro(libro);
-                Console.WriteLine("escribe el nombre de la biblioteca");
-                string nombreBiblioteca = Console.ReadLine();
                 Console.WriteLine("escribe el titulo ");
                 string titulo = Console.ReadLine();
                 Console.WriteLine("escribe el subtitulo");
@@ -124,8 +128,6 @@ namespace ejercicioGlobal1Casa.Servicios
             try
             {
                 long id = ci.crearIdPrestamo(prestamo);
-                Console.WriteLine("escribe el nombre de la biblioteca");
-                string nombreBiblioteca = Console.ReadLine();
                 Console.WriteLine("escribe el identicador del cliente");
                 long idCliente = Convert.ToInt64(Console.ReadLine());
                 Console.WriteLine("escribe el identificador del libro ");

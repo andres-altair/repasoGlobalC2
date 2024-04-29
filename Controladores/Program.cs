@@ -3,14 +3,26 @@ using ejercicioGlobal1Casa.Servicios;
 
 namespace ejercicioGlobal1Casa
 {
+    /// <summary>
+    /// clase principal
+    /// </summary>
     class Program
     {
         public static long identificadorBiblioteca;
+        public static DateTime hoy = DateTime.Now;
+        public static string rutaLog = "C:\\Users\\andre\\OneDrive\\Escritorio\\" + hoy.ToString("yyyyMMdd") + "-log.txt";
+        /// <summary>
+        /// metodo principal
+        /// </summary>
+        /// <param name="args"></param>
         public static void Main(string[] args)
         {
-            DateTime hoy = DateTime.Now;
-            string ruta = "C:\\Users\\andre\\OneDrive\\Escritorio\\"+hoy.ToString("yyyyMMdd")+ "log.txt";
-            string rutaB = "C:\\Users\\andre\\OneDrive\\Escritorio\\" + hoy.ToString("yyyyMMdd") + "log.txt"+"\\"+"biblioteca";
+          
+            
+            string rutaB = "C:\\Users\\andre\\OneDrive\\Escritorio\\biblioteca";
+            string rutaC = "C:\\Users\\andre\\OneDrive\\Escritorio\\cliente" ;
+            string rutaL = "C:\\Users\\andre\\OneDrive\\Escritorio\\libro";
+            string rutaP = "C:\\Users\\andre\\OneDrive\\Escritorio\\prestamo";
             List<BibliotecaDto> biblioteca = new List<BibliotecaDto>();
             List<ClienteDto>clienteDtos = new List<ClienteDto>();
             List<LibroDto>libro = new List<LibroDto>();
@@ -20,31 +32,29 @@ namespace ejercicioGlobal1Casa
             Aceso a  = new Aceso();
             escrituraFicheroInterfaz ei = new escrituraFicheroImplementacion();
             LecturaFicherosInterfaz lf = new LecturaFicherosImplementacion();
-            lf.ficheroBliblioteca(biblioteca,ruta);
-            lf.ficheroCliente(clienteDtos,ruta);
-            lf.ficheroLibro(libro,ruta);
-            lf.ficheroPrestamo(prestamo,ruta);
+            lf.ficheroBliblioteca(biblioteca,rutaB);
+            lf.ficheroCliente(clienteDtos,rutaC);
+            lf.ficheroLibro(libro,rutaL);
+            lf.ficheroPrestamo(prestamo,rutaP);
             bool abrir = false;
             int eleccion;
             int eleccion2;
             try
             {
-               
-                
-                    while (!abrir)
+                while (!abrir)
                     {
                         eleccion = mi.menu();
                         switch (eleccion)
                         {
                             case 0:
                             
-                                ei.ecribirBiblioteca(biblioteca, ruta);
+                                ei.ecribirBiblioteca(biblioteca, rutaB);
                            
-                                ei.ecribirCliente(clienteDtos, ruta);
+                                ei.ecribirCliente(clienteDtos, rutaC);
 
-                                ei.ecribirLibro(libro, ruta);
+                                ei.ecribirLibro(libro, rutaL);
 
-                                ei.escribirPrestamo(prestamo, ruta);
+                                ei.escribirPrestamo(prestamo, rutaP);
                             Console.WriteLine("cerrado");
                                 abrir = true;
                                 break;
@@ -81,7 +91,12 @@ namespace ejercicioGlobal1Casa
                         }
                     }
                 
-            }catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+            }catch (Exception ex) 
+            { Console.WriteLine("ha habido un error, intentelo mas tarde"); 
+             StreamWriter sw = new StreamWriter(rutaLog);
+                sw.WriteLine(ex.ToString());
+                sw.Close();
+            }
             
             
 

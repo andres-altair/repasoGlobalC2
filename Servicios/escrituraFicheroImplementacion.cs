@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace ejercicioGlobal1Casa.Servicios
 {
+    /// <summary>
+    /// implementacion que implementa a escrituraFicheroInterfaz
+    /// </summary>
     internal class escrituraFicheroImplementacion : escrituraFicheroInterfaz
     {
         public void ecribirBiblioteca(List<BibliotecaDto> biblioteca, string ruta)
